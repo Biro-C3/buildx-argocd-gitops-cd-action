@@ -1,1 +1,1 @@
-# buildx-argocd-gitops-cd-action
+gitops-argocd-action
