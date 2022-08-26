@@ -18,13 +18,13 @@ export DEPLOYMENT_REPO=${INPUT_DEPLOYMENT_REPO}
 export DEPLOYMENT_REPO_TOKEN=${INPUT_DEPLOYMENT_REPO_TOKEN}
 export EXTRA_ARGS=${INPUT_EXTRA_ARGS}
 
-mkdir -p $HOME/.docker/
+#mkdir -p $HOME/.docker/
 #        "insecure-registries" : ["$REGISTRY"],
-cat <<EOF >$HOME/.docker/config.json
-{"auths": {"$REGISTRY": {"auth": "$DOCKERHUB_AUTH"}}}
-EOF
+#cat <<EOF >$HOME/.docker/config.json
+#{"auths": {"$REGISTRY": {"auth": "$DOCKERHUB_AUTH"}}}
+#EOF
 
-  export CONTEXT="$CONTEXT_PATH"
+export CONTEXT="$CONTEXT_PATH"
 
 echo "Context: $CONTEXT"
 
@@ -38,7 +38,7 @@ export ARGS="--push $DESTINATION $DOCKERFILE $CONTEXT"
 echo "Args: $ARGS"
 
 echo "Building image"
-buildx build $ARGS --allow security.insecure  || exit 1
+buildx build $ARGS || exit 1
 
 #export ENVIRONMENT=${INPUT_ENVIRONMENT}
 #export YAML_FILE_BASE_PATH=/deployment-repo/deployments/$APPLICATION/$ENVIRONMENT
