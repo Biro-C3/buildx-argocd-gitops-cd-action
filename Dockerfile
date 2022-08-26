@@ -14,4 +14,10 @@ RUN apk add bash git
 COPY entrypoint.sh /entrypoint.sh
 RUN chmod +x /entrypoint.sh
 
+RUN <<EOF cat >>  /etc/docker/daemon.json
+{
+  "insecure-registries" : [ "https://harbor.cloud.c3.furg.br" ]
+}
+EOF
+
 ENTRYPOINT [ "/entrypoint.sh" ]
