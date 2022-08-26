@@ -21,7 +21,6 @@ mkdir -p $HOME/.docker/
 #        "insecure-registries" : ["$REGISTRY"],
 cat <<EOF >$HOME/.docker/config.json
 {
-        "insecure-registries" : ["$REGISTRY"],  
         "auths": {
                 "$REGISTRY": {
                         "auth": "$DOCKERHUB_AUTH"
