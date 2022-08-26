@@ -24,6 +24,7 @@ mkdir -p $HOME/.docker/
 #{"auths": {"$REGISTRY": {"auth": "$DOCKERHUB_AUTH"}}}
 #EOF
 
+
 cat <<EOF >$HOME/.docker/config.json
 {
 	"auths": {
@@ -46,10 +47,12 @@ echo "Dockerfile: $DOCKERFILE"
 export DESTINATION="--tag ${REGISTRY}/library/${APPLICATION}:${IMAGE_TAG}"
 echo "Destination: $DESTINATION"
 
-export ARGS="--push $DESTINATION $DOCKERFILE $CONTEXT"
+export ARGS="--push $DESTINATION $DOCKERFILE $CONTEXT --allow security.insecure"
 echo "Args: $ARGS"
 
 echo "Building image"
+buildx create --use --name insecure-builder --buildkitd-flags '--allow-insecure-entitlement security.insecure'
+
 buildx build $ARGS || exit 1
 
 #export ENVIRONMENT=${INPUT_ENVIRONMENT}
