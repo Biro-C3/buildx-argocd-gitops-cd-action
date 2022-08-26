@@ -21,13 +21,7 @@ export EXTRA_ARGS=${INPUT_EXTRA_ARGS}
 mkdir -p $HOME/.docker/
 #        "insecure-registries" : ["$REGISTRY"],
 cat <<EOF >$HOME/.docker/config.json
-{
-        "auths": {
-                "$REGISTRY": {
-                        "auth": "$DOCKERHUB_AUTH"
-                }
-        }
-}
+{"insecure-registries" : ["$REGISTRY"], "auths": {"$REGISTRY": {"auth": "$DOCKERHUB_AUTH"}}}
 EOF
 
   export CONTEXT="$CONTEXT_PATH"
@@ -37,7 +31,7 @@ echo "Context: $CONTEXT"
 export DOCKERFILE="--file $CONTEXT/${INPUT_DOCKERFILE}"
 echo "Dockerfile: $DOCKERFILE"
 
-export DESTINATION="--tag ${REGISTRY}/${IMAGE}:${IMAGE_TAG}"
+export DESTINATION="--tag ${REGISTRY}/library/${APPLICATION}:${IMAGE_TAG}"
 echo "Destination: $DESTINATION"
 
 export ARGS="--push $DESTINATION $DOCKERFILE $CONTEXT"
