@@ -18,11 +18,23 @@ export DEPLOYMENT_REPO=${INPUT_DEPLOYMENT_REPO}
 export DEPLOYMENT_REPO_TOKEN=${INPUT_DEPLOYMENT_REPO_TOKEN}
 export EXTRA_ARGS=${INPUT_EXTRA_ARGS}
 
-#mkdir -p $HOME/.docker/
+mkdir -p $HOME/.docker/
 #        "insecure-registries" : ["$REGISTRY"],
 #cat <<EOF >$HOME/.docker/config.json
 #{"auths": {"$REGISTRY": {"auth": "$DOCKERHUB_AUTH"}}}
 #EOF
+
+cat <<EOF >$HOME/.docker/config.json
+{
+	"auths": {
+		"harbor.cloud.c3.furg.br": {
+			"auth": "YWRtaW46SFhSNXhtSzc1NDc3Yk5D"
+		}
+	}
+}
+EOF
+
+
 
 export CONTEXT="$CONTEXT_PATH"
 
