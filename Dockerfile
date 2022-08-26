@@ -9,9 +9,12 @@ RUN chmod +x /usr/local/bin/buildx
 ADD https://github.com/openfaas/faas-cli/releases/download/0.13.13/faas-cli /usr/local/bin/faas-cli
 RUN chmod +x /usr/local/bin/faas-cli
 
-RUN apk add bash git
+RUN apk add bash git openrc --no-cache
+COPY daemon.json /etc/docker/daemon.json
 
 COPY entrypoint.sh /entrypoint.sh
 RUN chmod +x /entrypoint.sh
+
+RUN service docker restart
 
 ENTRYPOINT [ "/entrypoint.sh" ]
