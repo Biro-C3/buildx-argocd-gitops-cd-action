@@ -24,11 +24,7 @@ mkdir -p $HOME/.docker/
 #{"auths": {"$REGISTRY": {"auth": "$DOCKERHUB_AUTH"}}}
 #EOF
 
-cat <<EOF >/etc/docker/daemon.json
-{
-  "insecure-registries" : [ "https://harbor.cloud.c3.furg.br" ]
-}
-EOF
+
 
 cat <<EOF >$HOME/.docker/config.json
 {
