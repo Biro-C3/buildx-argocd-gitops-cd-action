@@ -14,8 +14,4 @@ RUN apk add bash git
 COPY entrypoint.sh /entrypoint.sh
 RUN chmod +x /entrypoint.sh
 
-COPY daemon.json /etc/docker/daemon.json
-
-RUN /etc/init.d/docker restart
-
 ENTRYPOINT [ "/entrypoint.sh" ]
