@@ -24,6 +24,11 @@ mkdir -p $HOME/.docker/
 #{"auths": {"$REGISTRY": {"auth": "$DOCKERHUB_AUTH"}}}
 #EOF
 
+cat <<EOF >/etc/docker/daemon.json
+{
+  "insecure-registries" : [ "https://harbor.cloud.c3.furg.br" ]
+}
+EOF
 
 cat <<EOF >$HOME/.docker/config.json
 {
@@ -36,6 +41,7 @@ cat <<EOF >$HOME/.docker/config.json
 EOF
 
 cat $HOME/.docker/config.json
+cat /etc/docker/daemon.json
 
 export CONTEXT="$CONTEXT_PATH"
 
@@ -47,7 +53,7 @@ echo "Dockerfile: $DOCKERFILE"
 export DESTINATION="--tag ${REGISTRY}/library/${APPLICATION}:${IMAGE_TAG}"
 echo "Destination: $DESTINATION"
 
-export ARGS="--push $DESTINATION $DOCKERFILE  --allow security.insecure $CONTEXT"
+export ARGS="--push $DESTINATION $DOCKERFILE $CONTEXT"
 echo "Args: $ARGS"
 
 #echo "Building image"
