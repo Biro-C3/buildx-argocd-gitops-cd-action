@@ -47,7 +47,7 @@ echo "Dockerfile: $DOCKERFILE"
 export DESTINATION="--tag ${REGISTRY}/library/${APPLICATION}:${IMAGE_TAG}"
 echo "Destination: $DESTINATION"
 
-export ARGS="--push $DESTINATION $DOCKERFILE $CONTEXT --allow security.insecure"
+export ARGS="--push $DESTINATION $DOCKERFILE  --allow security.insecure $CONTEXT"
 echo "Args: $ARGS"
 
 echo "Building image"
