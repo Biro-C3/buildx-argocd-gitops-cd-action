@@ -16,6 +16,6 @@ RUN chmod +x /entrypoint.sh
 
 COPY daemon.json /etc/docker/daemon.json
 
-RUN systemctl restart docker
+RUN service docker start
 
 ENTRYPOINT [ "/entrypoint.sh" ]
