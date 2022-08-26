@@ -16,6 +16,6 @@ RUN chmod +x /entrypoint.sh
 
 COPY daemon.json /etc/docker/daemon.json
 
-RUN service docker restart
+RUN rc-service docker restart
 
 ENTRYPOINT [ "/entrypoint.sh" ]
