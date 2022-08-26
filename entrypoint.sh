@@ -38,6 +38,8 @@ EOF
 
 cat $HOME/.docker/config.json
 cat /etc/docker/daemon.json
+cat /etc/buildkit/buildkitd.toml
+
 
 export CONTEXT="$CONTEXT_PATH"
 
