@@ -1,10 +1,11 @@
 #!/bin/bash
-
+echo "GITHUB_REPOSITORY: $GITHUB_REPOSITORY"
 export IMAGE=${INPUT_IMAGE:-"$GITHUB_REPOSITORY"}
-
+echo "IMAGE: $IMAGE"
 export IMAGE_TAG="$(echo $INPUT_IMAGE_TAG | cut -c1-16 )"
+echo "IMAGE_TAG: $IMAGE_TAG"
 export APPLICATION=${INPUT_APPLICATION:-"$(echo $IMAGE | cut -d/ -f2)"}
-
+echo "APPLICATION: $APPLICATION"
 export REGISTRY_USER="admin"
 export REGISTRY="harbor.cloud.c3.furg.br"
 
