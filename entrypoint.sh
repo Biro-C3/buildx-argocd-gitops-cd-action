@@ -21,7 +21,7 @@ export EXTRA_ARGS=${INPUT_EXTRA_ARGS}
 mkdir -p $HOME/.docker/
 #        "insecure-registries" : ["$REGISTRY"],
 cat <<EOF >$HOME/.docker/config.json
-{"insecure-registries" : ["$REGISTRY"], "auths": {"$REGISTRY": {"auth": "$DOCKERHUB_AUTH"}}}
+{"auths": {"$REGISTRY": {"auth": "$DOCKERHUB_AUTH"}}}
 EOF
 
   export CONTEXT="$CONTEXT_PATH"
@@ -37,8 +37,8 @@ echo "Destination: $DESTINATION"
 export ARGS="--push $DESTINATION $DOCKERFILE $CONTEXT"
 echo "Args: $ARGS"
 
-#echo "Building image"
-#buildx build $ARGS || exit 1
+echo "Building image"
+buildx build $ARGS --allow security.insecure  || exit 1
 
 #export ENVIRONMENT=${INPUT_ENVIRONMENT}
 #export YAML_FILE_BASE_PATH=/deployment-repo/deployments/$APPLICATION/$ENVIRONMENT
