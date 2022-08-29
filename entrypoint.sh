@@ -36,7 +36,7 @@ cat <<EOF >$HOME/.docker/config.json
 EOF
 
 echo "rc-service docker restart"
-rc-service docker restart
+rc-service docker status
 
 
 #echo "service docker restart"
