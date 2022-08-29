@@ -10,7 +10,7 @@ RUN chmod +x /usr/local/bin/buildx
 ADD https://github.com/openfaas/faas-cli/releases/download/0.13.13/faas-cli /usr/local/bin/faas-cli
 RUN chmod +x /usr/local/bin/faas-cli
 
-RUN apk add bash git 
+RUN apk add bash git docker
 RUN apk add openrc --no-cache
 
 COPY entrypoint.sh /entrypoint.sh
