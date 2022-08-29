@@ -40,7 +40,17 @@ cat <<EOF >$HOME/.docker/config.json
 }
 EOF
 
+echo "rc-service docker restart"
 rc-service docker restart
+
+
+echo "service docker restart"
+service docker restart
+
+echo "systemctl restart docker"
+systemctl restart docker
+
+
 
 #cat <<EOF > /etc/buildkit-config.toml
 #[registry."harbor.cloud.c3.furg.br"]
