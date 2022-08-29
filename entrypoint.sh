@@ -40,7 +40,7 @@ cat <<EOF >$HOME/.docker/config.json
 }
 EOF
 
-service docker restart
+service-rc docker restart
 
 #cat <<EOF > /etc/buildkit-config.toml
 #[registry."harbor.cloud.c3.furg.br"]
@@ -51,7 +51,7 @@ service docker restart
 
 
 #cat $HOME/.docker/config.json
-#cat /etc/docker/daemon.json
+cat /etc/docker/daemon.json
 #cat /etc/buildkit-config.toml
 
 
@@ -74,11 +74,8 @@ echo "Building image"
 
 
 #buildx create --use --name insecure-builder --buildkitd-flags "--allow-insecure-entitlement security.insecure"
-
-buildx create --use --config /etc/buildkit-config.toml --name mybuild
-
-
-buildx inspect --bootstrap
+#buildx create --use --config /etc/buildkit-config.toml --name mybuild
+#buildx inspect --bootstrap
 
 
 
