@@ -24,8 +24,12 @@ mkdir -p $HOME/.docker/
 #{"auths": {"$REGISTRY": {"auth": "$DOCKERHUB_AUTH"}}}
 #EOF
 
-
-
+#mkdir -p $HOME/.docker/
+cat <<EOF >/etc/docker/daemon.json
+{
+	"insecure-registries" : [ "https://harbor.cloud.c3.furg.br" ]
+}
+EOF
 cat <<EOF >$HOME/.docker/config.json
 {
 	"auths": {
@@ -36,19 +40,19 @@ cat <<EOF >$HOME/.docker/config.json
 }
 EOF
 
+service docker restart
 
-#mkdir -p /etc/
-cat <<EOF > /etc/buildkit-config.toml
-[registry."harbor.cloud.c3.furg.br"]
-  mirrors = ["harbor.cloud.c3.furg.br"]
-  http = true
-  insecure = true
-EOF
+#cat <<EOF > /etc/buildkit-config.toml
+#[registry."harbor.cloud.c3.furg.br"]
+#  mirrors = ["harbor.cloud.c3.furg.br"]
+#  http = true
+#  insecure = true
+#EOF
 
 
 #cat $HOME/.docker/config.json
 #cat /etc/docker/daemon.json
-cat /etc/buildkit-config.toml
+#cat /etc/buildkit-config.toml
 
 
 export CONTEXT="$CONTEXT_PATH"
@@ -67,19 +71,18 @@ echo "Args: $ARGS"
 echo "Building image"
 
 
-#buildx create --use --config buildkit-config.toml
 
-#buildx create --use --name insecure-builder --buildkitd-flags '--allow-insecure-entitlement security.insecure'
 
 #buildx create --use --name insecure-builder --buildkitd-flags "--allow-insecure-entitlement security.insecure"
 
 buildx create --use --config /etc/buildkit-config.toml --name mybuild
 
-buildx create --append --name mybuild
 
 buildx inspect --bootstrap
 
-buildx build $ARGS || exit 1
+
+
+#buildx build $ARGS || exit 1
 
 #cat /etc/insecure-builder.toml
 #cat /etc/buildki/insecure-builder.toml
