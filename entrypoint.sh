@@ -88,7 +88,7 @@ echo "Building image"
 
 
 
-#buildx build $ARGS || exit 1
+buildx build $ARGS || exit 1
 
 #cat /etc/insecure-builder.toml
 #cat /etc/buildki/insecure-builder.toml
