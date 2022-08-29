@@ -40,7 +40,7 @@ cat <<EOF >$HOME/.docker/config.json
 }
 EOF
 
-service-rc docker restart
+rc-service docker restart
 
 #cat <<EOF > /etc/buildkit-config.toml
 #[registry."harbor.cloud.c3.furg.br"]
@@ -53,7 +53,7 @@ service-rc docker restart
 #cat $HOME/.docker/config.json
 cat /etc/docker/daemon.json
 #cat /etc/buildkit-config.toml
-
+cat /etc/*-release
 
 export CONTEXT="$CONTEXT_PATH"
 
