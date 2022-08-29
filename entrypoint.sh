@@ -75,11 +75,11 @@ echo "Building image"
 
 buildx create --use --config /etc/buildkit-config.toml --name mybuild
 
-buildx create --append --name mybuild
+#buildx create --append --name mybuild
 
 buildx inspect --bootstrap
 
-buildx build --load $ARGS || exit 1
+buildx build $ARGS || exit 1
 
 #cat /etc/insecure-builder.toml
 #cat /etc/buildki/insecure-builder.toml
