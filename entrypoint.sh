@@ -25,10 +25,11 @@ mkdir -p $HOME/.docker/
 #EOF
 
 #mkdir -p $HOME/.docker/
-cat <<EOF >/etc/docker/daemon.json
-{
-	"insecure-registries" : [ "https://harbor.cloud.c3.furg.br" ]
-}
+#cat <<EOF >/etc/docker/daemon.json
+#{
+#	"insecure-registries" : [ "https://harbor.cloud.c3.furg.br" ]
+#}
+
 EOF
 cat <<EOF >$HOME/.docker/config.json
 {
@@ -40,8 +41,8 @@ cat <<EOF >$HOME/.docker/config.json
 }
 EOF
 
-echo "rc-service docker restart"
-rc-service docker restart
+#echo "rc-service docker restart"
+#rc-service docker restart
 
 
 #echo "service docker restart"
@@ -60,9 +61,9 @@ rc-service docker restart
 
 
 #cat $HOME/.docker/config.json
-cat /etc/docker/daemon.json
+#cat /etc/docker/daemon.json
 #cat /etc/buildkit-config.toml
-cat /etc/*-release
+#cat /etc/*-release
 
 export CONTEXT="$CONTEXT_PATH"
 
