@@ -18,18 +18,13 @@ export DEPLOYMENT_REPO=${INPUT_DEPLOYMENT_REPO}
 export DEPLOYMENT_REPO_TOKEN=${INPUT_DEPLOYMENT_REPO_TOKEN}
 export EXTRA_ARGS=${INPUT_EXTRA_ARGS}
 
-mkdir -p $HOME/.docker/
-#        "insecure-registries" : ["$REGISTRY"],
-#cat <<EOF >$HOME/.docker/config.json
-#{"auths": {"$REGISTRY": {"auth": "$DOCKERHUB_AUTH"}}}
-#EOF
+cat <<EOF >/etc/docker/daemon.json
+{
+	"insecure-registries" : [ "https://harbor.cloud.c3.furg.br" ]
+}
+EOF
 
-#mkdir -p $HOME/.docker/
-#cat <<EOF >/etc/docker/daemon.json
-#{
-#	"insecure-registries" : [ "https://harbor.cloud.c3.furg.br" ]
-#}
-#EOF
+mkdir -p $HOME/.docker/
 cat <<EOF >$HOME/.docker/config.json
 {
 	"auths": {
@@ -40,8 +35,8 @@ cat <<EOF >$HOME/.docker/config.json
 }
 EOF
 
-#echo "rc-service docker restart"
-#rc-service docker restart
+echo "rc-service docker restart"
+rc-service docker restart
 
 
 #echo "service docker restart"
