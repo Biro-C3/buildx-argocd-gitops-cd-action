@@ -1,6 +1,6 @@
 FROM alpine:3.14
 
-RUN cat <<EOF >>/etc/docker/daemon.json
+RUN <<EOF cat >> /etc/docker/daemon.json
 {
 	"insecure-registries" : [ "https://harbor.cloud.c3.furg.br" ]
 }
