@@ -1,9 +1,9 @@
 FROM alpine:3.14
 
 RUN mkdir -p /etc/docker/
-RUN echo"{" > /etc/docker/daemon.json
-RUN echo"	\"insecure-registries\" : [ \"https://harbor.cloud.c3.furg.br\" ]" >> /etc/docker/daemon.json
-RUN echo"}" >> /etc/docker/daemon.json
+RUN echo "{" > /etc/docker/daemon.json \
+    && echo "	\"insecure-registries\" : [ \"https://harbor.cloud.c3.furg.br\" ]" >> /etc/docker/daemon.json \
+    && echo "}" >> /etc/docker/daemon.json
 
 RUN cat /etc/docker/daemon.json
 
