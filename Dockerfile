@@ -16,6 +16,6 @@ RUN apk add openrc --no-cache
 COPY entrypoint.sh /entrypoint.sh
 RUN chmod +x /entrypoint.sh
 
-RUN rc-service docker restart
+ENTRYPOINT ["rc-service docker restart"]
 
 ENTRYPOINT [ "/entrypoint.sh" ]
