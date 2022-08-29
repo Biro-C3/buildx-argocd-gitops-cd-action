@@ -48,7 +48,7 @@ EOF
 
 #cat $HOME/.docker/config.json
 #cat /etc/docker/daemon.json
-#cat /etc/buildkit-config.toml
+cat /etc/buildkit-config.toml
 
 
 export CONTEXT="$CONTEXT_PATH"
@@ -75,7 +75,7 @@ echo "Building image"
 
 buildx create --use --config /etc/buildkit-config.toml --name mybuild
 
-#buildx create --append --name mybuild
+buildx create --append --name mybuild
 
 buildx inspect --bootstrap
 
