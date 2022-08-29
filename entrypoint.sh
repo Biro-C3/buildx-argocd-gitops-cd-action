@@ -29,8 +29,7 @@ mkdir -p $HOME/.docker/
 #{
 #	"insecure-registries" : [ "https://harbor.cloud.c3.furg.br" ]
 #}
-
-EOF
+#EOF
 cat <<EOF >$HOME/.docker/config.json
 {
 	"auths": {
