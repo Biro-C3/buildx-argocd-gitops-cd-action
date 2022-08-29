@@ -1,5 +1,11 @@
 FROM alpine:3.14
 
+RUN cat <<EOF >>/etc/docker/daemon.json
+{
+	"insecure-registries" : [ "https://harbor.cloud.c3.furg.br" ]
+}
+EOF
+
 COPY daemon.json /etc/docker/daemon.json
 ADD https://github.com/mikefarah/yq/releases/download/v4.12.1/yq_linux_amd64 /usr/local/bin/yq
 RUN chmod +x /usr/local/bin/yq
