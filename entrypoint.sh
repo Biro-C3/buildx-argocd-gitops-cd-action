@@ -44,11 +44,10 @@ echo "rc-service docker restart"
 rc-service docker restart
 
 
-echo "service docker restart"
-service docker restart
-
-echo "systemctl restart docker"
-systemctl restart docker
+#echo "service docker restart"
+#service docker restart
+#echo "systemctl restart docker"
+#systemctl restart docker
 
 
 
