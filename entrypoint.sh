@@ -67,11 +67,11 @@ buildx create --use --name insecure-builder --buildkitd-flags "--allow-insecure-
 
 buildx inspect --bootstrap
 
-cat /etc/insecure-builder.toml
-cat /etc/buildki/insecure-builder.toml
+#cat /etc/insecure-builder.toml
+#cat /etc/buildki/insecure-builder.toml
 
-cat /etc/buildkitd.toml
-cat /etc/buildki/buildkitd.toml
+#cat /etc/buildkitd.toml
+#cat /etc/buildki/buildkitd.toml
 
 
 
