@@ -36,6 +36,8 @@ cat <<EOF >$HOME/.docker/config.json
 }
 EOF
 
+
+mkdir -p /etc/buildkit/
 cat <<EOF > /etc/buildkit/buildkit-config.toml
 [registry."harbor.cloud.c3.furg.br"]
   mirrors = ["harbor.cloud.c3.furg.br"]
@@ -48,7 +50,7 @@ cat $HOME/.docker/config.json
 cat /etc/docker/daemon.json
 
 #cat /etc/buildkitd.toml
-#cat /etc/buildki/buildkitd.toml
+cat /etc/buildki/buildkit-config.toml
 
 
 export CONTEXT="$CONTEXT_PATH"
