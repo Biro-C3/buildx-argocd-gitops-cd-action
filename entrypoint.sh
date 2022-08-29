@@ -48,7 +48,7 @@ EOF
 
 #cat $HOME/.docker/config.json
 #cat /etc/docker/daemon.json
-cat /etc/buildkit-config.toml
+#cat /etc/buildkit-config.toml
 
 
 export CONTEXT="$CONTEXT_PATH"
@@ -73,7 +73,7 @@ buildx create --use --config buildkit-config.toml
 
 #buildx create --use --name insecure-builder --buildkitd-flags "--allow-insecure-entitlement security.insecure"
 
-buildx create --use --config buildkit-config.toml
+buildx create --use --config /etc/buildkit-config.toml
 
 buildx inspect --bootstrap
 
