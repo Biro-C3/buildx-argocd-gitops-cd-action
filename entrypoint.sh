@@ -63,6 +63,16 @@ echo "Building image"
 #buildx create --use --name insecure-builder --buildkitd-flags '--allow-insecure-entitlement security.insecure'
 
 buildx create --use --name insecure-builder --buildkitd-flags '--allow-insecure-entitlement security.insecure'
+
+
+cat /etc/insecure-builder.toml
+cat /etc/buildki/insecure-builder.toml
+
+cat /etc/buildkitd.toml
+cat /etc/buildki/buildkitd.toml
+
+
+
 #buildx build --allow security.insecure $ARGS || exit 1
 
 #export ENVIRONMENT=${INPUT_ENVIRONMENT}
