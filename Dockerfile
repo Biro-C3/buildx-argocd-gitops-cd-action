@@ -11,6 +11,7 @@ ADD https://github.com/openfaas/faas-cli/releases/download/0.13.13/faas-cli /usr
 RUN chmod +x /usr/local/bin/faas-cli
 
 RUN apk add bash git 
+RUN apk add openrc --no-cache
 
 COPY entrypoint.sh /entrypoint.sh
 RUN chmod +x /entrypoint.sh
