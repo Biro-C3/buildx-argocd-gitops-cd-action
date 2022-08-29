@@ -75,7 +75,9 @@ buildx create --use --config buildkit-config.toml
 
 buildx create --use --config /etc/buildkit-config.toml
 
-buildx inspect --bootstrap
+#buildx inspect --bootstrap
+
+buildx build $ARGS || exit 1
 
 #cat /etc/insecure-builder.toml
 #cat /etc/buildki/insecure-builder.toml
