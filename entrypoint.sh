@@ -38,7 +38,8 @@ EOF
 
 cat $HOME/.docker/config.json
 cat /etc/docker/daemon.json
-#cat /etc/buildkitd.toml
+cat /etc/buildkitd.toml
+cat /etc/buildki/buildkitd.toml
 
 
 export CONTEXT="$CONTEXT_PATH"
@@ -55,10 +56,14 @@ export ARGS="--push $DESTINATION $DOCKERFILE $CONTEXT"
 echo "Args: $ARGS"
 
 echo "Building image"
+
+
+
+
 #buildx create --use --name insecure-builder --buildkitd-flags '--allow-insecure-entitlement security.insecure'
 
 buildx create --use --name insecure-builder --buildkitd-flags '--allow-insecure-entitlement security.insecure'
-buildx build --allow security.insecure $ARGS || exit 1
+#buildx build --allow security.insecure $ARGS || exit 1
 
 #export ENVIRONMENT=${INPUT_ENVIRONMENT}
 #export YAML_FILE_BASE_PATH=/deployment-repo/deployments/$APPLICATION/$ENVIRONMENT
