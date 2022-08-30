@@ -17,7 +17,7 @@ inputs:
   deployment_repo:
     description: Deployment repository
     required: true
-    default: 'totdev/applications_devstack'
+    default: 'Biro-C3/applications_cloud'
   deployment_repo_token:
     description: Deployment repository token
     required: true
