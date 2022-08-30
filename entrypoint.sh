@@ -18,46 +18,25 @@ export DEPLOYMENT_REPO=${INPUT_DEPLOYMENT_REPO}
 export DEPLOYMENT_REPO_TOKEN=${INPUT_DEPLOYMENT_REPO_TOKEN}
 export EXTRA_ARGS=${INPUT_EXTRA_ARGS}
 
-cat <<EOF >/etc/docker/daemon.json
-{
-	"insecure-registries" : [ "https://harbor.cloud.c3.furg.br" ]
-}
-EOF
-
-mkdir -p $HOME/.docker/
-cat <<EOF >$HOME/.docker/config.json
-{
-	"auths": {
-		"harbor.cloud.c3.furg.br": {
-			"auth": "YWRtaW46SFhSNXhtSzc1NDc3Yk5D"
-		}
-	}
-}
-EOF
-
-echo "rc-service docker restart"
-rc-service docker status
-
-
-#echo "service docker restart"
-#service docker restart
-#echo "systemctl restart docker"
-#systemctl restart docker
-
-
-
-#cat <<EOF > /etc/buildkit-config.toml
-#[registry."harbor.cloud.c3.furg.br"]
-#  mirrors = ["harbor.cloud.c3.furg.br"]
-#  http = true
-#  insecure = true
+#cat <<EOF >/etc/docker/daemon.json
+#{
+#	"insecure-registries" : [ "https://harbor.cloud.c3.furg.br" ]
+#}
 #EOF
 
+#mkdir -p $HOME/.docker/
+#cat <<EOF >$HOME/.docker/config.json
+#{
+#	"auths": {
+#		"harbor.cloud.c3.furg.br": {
+#			"auth": "YWRtaW46SFhSNXhtSzc1NDc3Yk5D"
+#		}
+#	}
+#}
+#EOF
 
-#cat $HOME/.docker/config.json
-#cat /etc/docker/daemon.json
-#cat /etc/buildkit-config.toml
-#cat /etc/*-release
+#echo "rc-service docker restart"
+#rc-service docker status
 
 export CONTEXT="$CONTEXT_PATH"
 
@@ -75,8 +54,6 @@ echo "Args: $ARGS"
 echo "Building image"
 
 
-
-
 #buildx create --use --name insecure-builder --buildkitd-flags "--allow-insecure-entitlement security.insecure"
 #buildx create --use --config /etc/buildkit-config.toml --name mybuild
 #buildx inspect --bootstrap
@@ -85,15 +62,6 @@ echo "Building image"
 
 buildx build $ARGS || exit 1
 
-#cat /etc/insecure-builder.toml
-#cat /etc/buildki/insecure-builder.toml
-
-#cat /etc/buildkitd.toml
-#cat /etc/buildki/buildkitd.toml
-
-
-
-#buildx build --allow security.insecure $ARGS || exit 1
 
 #export ENVIRONMENT=${INPUT_ENVIRONMENT}
 #export YAML_FILE_BASE_PATH=/deployment-repo/deployments/$APPLICATION/$ENVIRONMENT
