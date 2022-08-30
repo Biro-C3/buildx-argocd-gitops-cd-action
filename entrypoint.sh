@@ -69,12 +69,20 @@ export YAML_FILE_BASE_PATH=/deployment-repo/deployments/$APPLICATION/$ENVIRONMEN
 export NEWNAME="${REGISTRY}/${IMAGE}"
 export NEWTAG="${IMAGE_TAG}"
 
+echo "NEWNAME: $NEWNAME"
+
+export NEWNAME="${REGISTRY}/library/${APPLICATION}"
+echo "NEWNAME: $NEWNAME"
+
 git clone https://$DEPLOYMENT_REPO_TOKEN@github.com/$DEPLOYMENT_REPO /deployment-repo || exit 1
 
 export YAML_FILE="$YAML_FILE_BASE_PATH/${INPUT_YAML_FILE}"
 echo "YAML file: $YAML_FILE"
 yq eval -i '.images[0].name = env(NEWNAME)' "$YAML_FILE" || exit 1  
 yq eval -i '.images[0].newTag = env(NEWTAG)' "$YAML_FILE" || exit 1
+
+#${REGISTRY}/library/${APPLICATION}:${IMAGE_TAG}"
+
 
 cd /deployment-repo
 git config --local user.email "actions@github.com"
