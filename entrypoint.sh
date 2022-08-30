@@ -24,16 +24,16 @@ export EXTRA_ARGS=${INPUT_EXTRA_ARGS}
 #}
 #EOF
 
-#mkdir -p $HOME/.docker/
-#cat <<EOF >$HOME/.docker/config.json
-#{
-#	"auths": {
-#		"harbor.cloud.c3.furg.br": {
-#			"auth": "YWRtaW46SFhSNXhtSzc1NDc3Yk5D"
-#		}
-#	}
-#}
-#EOF
+mkdir -p $HOME/.docker/
+cat <<EOF >$HOME/.docker/config.json
+{
+	"auths": {
+		"harbor.cloud.c3.furg.br": {
+			"auth": "YWRtaW46SFhSNXhtSzc1NDc3Yk5D"
+		}
+	}
+}
+EOF
 
 #echo "rc-service docker restart"
 #rc-service docker status
