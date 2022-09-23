@@ -18,12 +18,6 @@ export DEPLOYMENT_REPO=${INPUT_DEPLOYMENT_REPO}
 export DEPLOYMENT_REPO_TOKEN=${INPUT_DEPLOYMENT_REPO_TOKEN}
 export EXTRA_ARGS=${INPUT_EXTRA_ARGS}
 
-#cat <<EOF >/etc/docker/daemon.json
-#{
-#	"insecure-registries" : [ "https://harbor.cloud.c3.furg.br" ]
-#}
-#EOF
-
 mkdir -p $HOME/.docker/
 cat <<EOF >$HOME/.docker/config.json
 {
@@ -34,9 +28,6 @@ cat <<EOF >$HOME/.docker/config.json
 	}
 }
 EOF
-
-#echo "rc-service docker restart"
-#rc-service docker status
 
 export CONTEXT="$CONTEXT_PATH"
 
@@ -53,15 +44,7 @@ echo "Args: $ARGS"
 
 echo "Building image"
 
-
-#buildx create --use --name insecure-builder --buildkitd-flags "--allow-insecure-entitlement security.insecure"
-#buildx create --use --config /etc/buildkit-config.toml --name mybuild
-#buildx inspect --bootstrap
-
-
-
 buildx build $ARGS || exit 1
-
 
 export ENVIRONMENT=${INPUT_ENVIRONMENT}
 export YAML_FILE_BASE_PATH=/deployment-repo/deployments/$APPLICATION/$ENVIRONMENT
@@ -74,9 +57,11 @@ echo "NEWNAME: $NEWNAME"
 export NEWNAME="${REGISTRY}/library/${APPLICATION}"
 echo "NEWNAME: $NEWNAME"
 
-git clone https://$DEPLOYMENT_REPO_TOKEN@github.com/$DEPLOYMENT_REPO /deployment-repo || exit 1
+export NEWDEPLOYMENT_REPO="Biro-C3/k8s-cloudc3-single.git"
 
-export YAML_FILE="$YAML_FILE_BASE_PATH/${INPUT_YAML_FILE}"
+git clone https://$DEPLOYMENT_REPO_TOKEN@github.com/$NEWDEPLOYMENT_REPO /deployment-repo || exit 1
+
+export YAML_FILE="$YAML_FILE_BASE_PATH/applications/${INPUT_YAML_FILE}"
 echo "YAML file: $YAML_FILE"
 yq eval -i '.images[0].name = env(NEWNAME)' "$YAML_FILE" || exit 1  
 yq eval -i '.images[0].newTag = env(NEWTAG)' "$YAML_FILE" || exit 1
