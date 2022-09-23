@@ -57,11 +57,15 @@ echo "NEWNAME: $NEWNAME"
 export NEWNAME="${REGISTRY}/library/${APPLICATION}"
 echo "NEWNAME: $NEWNAME"
 
+
 export NEWDEPLOYMENT_REPO="Biro-C3/k8s-cloudc3-single.git"
+
 
 git clone https://$DEPLOYMENT_REPO_TOKEN@github.com/$NEWDEPLOYMENT_REPO /deployment-repo || exit 1
 
-git checkout developer
+echo "NEWDEPLOYMENT_REPO: $NEWDEPLOYMENT_REPO"
+
+git checkout developer || exit 1
 
 export YAML_FILE="$YAML_FILE_BASE_PATH/${INPUT_YAML_FILE}"
 echo "YAML file: $YAML_FILE"
