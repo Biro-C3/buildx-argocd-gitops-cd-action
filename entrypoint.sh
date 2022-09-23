@@ -61,6 +61,8 @@ export NEWDEPLOYMENT_REPO="Biro-C3/k8s-cloudc3-single.git"
 
 git clone https://$DEPLOYMENT_REPO_TOKEN@github.com/$NEWDEPLOYMENT_REPO /deployment-repo || exit 1
 
+git checkout developer
+
 export YAML_FILE="$YAML_FILE_BASE_PATH/${INPUT_YAML_FILE}"
 echo "YAML file: $YAML_FILE"
 yq eval -i '.images[0].name = env(NEWNAME)' "$YAML_FILE" || exit 1  
