@@ -7,7 +7,7 @@ echo "IMAGE_TAG: $IMAGE_TAG"
 export APPLICATION=${INPUT_APPLICATION:-"$(echo $IMAGE | cut -d/ -f2)"}
 echo "APPLICATION: $APPLICATION"
 export REGISTRY_USER="admin"
-export REGISTRY="harbor.cloud2.c3.furg.br"
+export REGISTRY="harbor.cloud.c3.furg.br"
 
 
 export REGISTRY_PASSWORD=${INPUT_REGISTRY_PASSWORD}
