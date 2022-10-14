@@ -22,7 +22,7 @@ mkdir -p $HOME/.docker/
 cat <<EOF >$HOME/.docker/config.json
 {
 	"auths": {
-		"harbor.cloud2.c3.furg.br": {
+		"harbor.cloud.c3.furg.br": {
 			"auth": "YWRtaW46SFhSNXhtSzc1NDc3Yk5D"
 		}
 	}
