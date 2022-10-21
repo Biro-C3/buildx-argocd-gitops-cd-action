@@ -10,7 +10,9 @@ export K8S_NAME="cloud"
 export REGISTRY_USER="admin"
 export REGISTRY="harbor.cloud.c3.furg.br"
 
-##
+#k8s_name
+export K8S_NAME = "cloud2"
+
 export REGISTRY_PASSWORD=${INPUT_REGISTRY_PASSWORD}
 export DOCKERHUB_AUTH="$(echo -n $REGISTRY_USER:$REGISTRY_PASSWORD | base64)"
 export CONTEXT_PATH=${INPUT_CONTEXT_PATH}
