@@ -6,6 +6,7 @@ export IMAGE_TAG="$(echo $INPUT_IMAGE_TAG | cut -c1-16 )"
 echo "IMAGE_TAG: $IMAGE_TAG"
 export APPLICATION=${INPUT_APPLICATION:-"$(echo $IMAGE | cut -d/ -f2)"}
 echo "APPLICATION: $APPLICATION"
+export K8S_NAME="cloud"
 export REGISTRY_USER="admin"
 export REGISTRY="harbor.cloud.c3.furg.br"
 
@@ -47,7 +48,7 @@ echo "Building image"
 buildx build $ARGS || exit 1
 
 export ENVIRONMENT=${INPUT_ENVIRONMENT}
-export YAML_FILE_BASE_PATH=/deployment-repo/applications/cloud/deployments/$APPLICATION/$ENVIRONMENT
+export YAML_FILE_BASE_PATH=/deployment-repo/applications/$K8S_NAME/deployments/$APPLICATION/$ENVIRONMENT
 
 export NEWNAME="${REGISTRY}/${IMAGE}"
 export NEWTAG="${IMAGE_TAG}"
