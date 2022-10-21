@@ -47,7 +47,7 @@ echo "Building image"
 buildx build $ARGS || exit 1
 
 export ENVIRONMENT=${INPUT_ENVIRONMENT}
-export YAML_FILE_BASE_PATH=/deployment-repo/applications/deployments/$APPLICATION/$ENVIRONMENT
+export YAML_FILE_BASE_PATH=/deployment-repo/applications/cloud/deployments/$APPLICATION/$ENVIRONMENT
 
 export NEWNAME="${REGISTRY}/${IMAGE}"
 export NEWTAG="${IMAGE_TAG}"
