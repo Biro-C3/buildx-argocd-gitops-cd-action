@@ -6,12 +6,11 @@ export IMAGE_TAG="$(echo $INPUT_IMAGE_TAG | cut -c1-16 )"
 echo "IMAGE_TAG: $IMAGE_TAG"
 export APPLICATION=${INPUT_APPLICATION:-"$(echo $IMAGE | cut -d/ -f2)"}
 echo "APPLICATION: $APPLICATION"
-export K8S_NAME="cloud"
 export REGISTRY_USER="admin"
 export REGISTRY="harbor.cloud.c3.furg.br"
 
 #k8s_name
-export K8S_NAME = "cloud2"
+export K8S_NAME = "cloud"
 
 export REGISTRY_PASSWORD=${INPUT_REGISTRY_PASSWORD}
 export DOCKERHUB_AUTH="$(echo -n $REGISTRY_USER:$REGISTRY_PASSWORD | base64)"
