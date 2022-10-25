@@ -68,6 +68,8 @@ git clone https://$DEPLOYMENT_REPO_TOKEN@github.com/$NEWDEPLOYMENT_REPO /deploym
 echo "NEWDEPLOYMENT_REPO: $NEWDEPLOYMENT_REPO"
 
 cd /deployment-repo
+
+#k8s_checkout
 git checkout developer 
 
 
