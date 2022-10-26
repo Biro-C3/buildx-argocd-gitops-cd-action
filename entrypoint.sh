@@ -7,7 +7,7 @@ echo "IMAGE_TAG: $IMAGE_TAG"
 export APPLICATION=${INPUT_APPLICATION:-"$(echo $IMAGE | cut -d/ -f2)"}
 echo "APPLICATION: $APPLICATION"
 export REGISTRY_USER="admin"
-export REGISTRY="harbor.cloud.c3.furg.br"
+export REGISTRY="harbor.cloud2.c3.furg.br"
 
 #k8s_name
 export K8S_NAME="cloud2"
@@ -24,7 +24,7 @@ mkdir -p $HOME/.docker/
 cat <<EOF >$HOME/.docker/config.json
 {
 	"auths": {
-		"harbor.cloud.c3.furg.br": {
+		"harbor.cloud2.c3.furg.br": {
 			"auth": "YWRtaW46SFhSNXhtSzc1NDc3Yk5D"
 		}
 	}
