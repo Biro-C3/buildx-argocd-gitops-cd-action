@@ -70,7 +70,7 @@ echo "NEWDEPLOYMENT_REPO: $NEWDEPLOYMENT_REPO"
 cd /deployment-repo
 
 #k8s_checkout
-git checkout developer 
+git checkout production 
 
 
 
