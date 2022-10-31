@@ -10,7 +10,7 @@ export REGISTRY_USER="admin"
 export REGISTRY="harbor.cloud.c3.furg.br"
 
 #k8s_name
-export K8S_NAME="devstack"
+export K8S_NAME="cloud"
 
 export REGISTRY_PASSWORD=${INPUT_REGISTRY_PASSWORD}
 export DOCKERHUB_AUTH="$(echo -n $REGISTRY_USER:$REGISTRY_PASSWORD | base64)"
@@ -70,7 +70,7 @@ echo "NEWDEPLOYMENT_REPO: $NEWDEPLOYMENT_REPO"
 cd /deployment-repo
 
 #k8s_checkout
-git checkout developer 
+git checkout production 
 
 
 
